@@ -51,7 +51,7 @@
     <Compile Include="Structs\F1_2020_Data.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\assettocorsasharedmemory\AssettoCorsaSharedMemory.csproj">
+    <ProjectReference Include="..\..\assettocorsasharedmemory\AssettoCorsaSharedMemory.csproj">
       <Project>{020AF3ED-0A4C-4215-9B1D-1D41DD26F8BB}</Project>
       <Name>AssettoCorsaSharedMemory</Name>
     </ProjectReference>

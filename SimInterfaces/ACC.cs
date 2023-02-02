@@ -1,12 +1,5 @@
 ﻿using AssettoCorsaSharedMemory;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.NetworkInformation;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using static AssettoCorsaSharedMemory.AssettoCorsa;
 
 namespace SimInterfaces
 {
@@ -91,7 +84,7 @@ namespace SimInterfaces
             int brakeBiasOffset = 0;
             if (_status == AC_STATUS.AC_LIVE)
             {
-                BrakeBiasOffset.TryGetValue(_carModel, out brakeBiasOffset);
+                AssettoCorsa.BrakeBiasOffset.TryGetValue(_carModel, out brakeBiasOffset);
             }
             _simData.BrakeBias = ((e.Physics.BrakeBias * 100) + brakeBiasOffset);
 
