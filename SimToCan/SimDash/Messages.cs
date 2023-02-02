@@ -45,7 +45,7 @@ namespace SimDash
             return data;
         }
 
-        public static byte[] Build102(int gear, BoolData bd, int carId)
+        public static byte[] Build102(int gear, BoolData bd, int maxRpm)
         {
             uint tc, abs, ign, running, pitLim;
             tc = (uint)(bd.Tc == true ? 1 : 0);
@@ -60,9 +60,8 @@ namespace SimDash
                                         (ign << 2) +
                                         (abs << 1) +
                                         tc);
-            data[2] = Convert.ToByte(carId);
-            //data[2] = Convert.ToByte(((uint)maxRPM & 0xFF00) >> 8);
-            //data[3] = Convert.ToByte((uint)maxRPM & 0x00FF);
+            data[2] = Convert.ToByte(((uint)maxRpm & 0xFF00) >> 8);
+            data[3] = Convert.ToByte((uint)maxRpm & 0x00FF);
             return data;
         }
 

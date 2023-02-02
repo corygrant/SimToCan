@@ -139,7 +139,7 @@ namespace SimToCan
             bd.PitLim = e.simData.PitLimOn;
             bd.Abs = e.simData.Abs;
             bd.Tc = e.simData.Tc;
-            data.Payload = SimDash.Messages.Build102(e.simData.Gear, bd, e.simData.CarId);
+            data.Payload = SimDash.Messages.Build102(e.simData.Gear, bd, e.simData.MaxRpm);
             can.Write(data);
 
             data.Id = 0x67;

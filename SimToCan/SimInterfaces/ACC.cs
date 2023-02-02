@@ -17,6 +17,7 @@ namespace SimInterfaces
 
         private AC_STATUS _status;
         private float _maxFuel;
+        private int _maxRpm;
         private AssettoCorsa.CarModel _carModel;
 
         private SimData _simData = new SimData();
@@ -63,6 +64,7 @@ namespace SimInterfaces
         {
             //Map ACC Physics vars to 
             _simData.Rpm = e.Physics.Rpms;
+            _simData.MaxRpm = _maxRpm;
             _simData.IgnOn = e.Physics.IgnitionOn == 1;
             _simData.EngineOn = e.Physics.IsEngineRunning == 1;
             _simData.Tc = e.Physics.TC > 0.0;
@@ -110,6 +112,10 @@ namespace SimInterfaces
                 _simData.CarId = 0;
             }
 
+            if (_status == AC_STATUS.AC_LIVE)
+            {
+                AssettoCorsa.MaxRPM.TryGetValue(_carModel, out _maxRpm);
+            }
         }
     }
 }

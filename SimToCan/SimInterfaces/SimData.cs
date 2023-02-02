@@ -30,6 +30,7 @@ namespace SimInterfaces
         public bool Tc { get; set; }
         public double BrakeBias { get; set; }
         public int FuelLevel { get; set; }
+        public int MaxRpm { get; set; }
         public int CarId { get; set; }
     }
 }

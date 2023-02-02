@@ -23,8 +23,8 @@ namespace SimInterfaces
         {
             for(int i=0; i<4; i++)
             {
-                _tirePressure[i] = 28;
-                _brakeTemp[i] = 500;
+                _tirePressure[i] = 0;
+                _brakeTemp[i] = 0;
             }
 
             try
@@ -45,7 +45,8 @@ namespace SimInterfaces
                             dr2Data = (DR2_Data)RawDeserialize(recvBuffer, 0, typeof(DR2_Data));
 
                             //Format data into sim data format
-                            simData.Rpm = Convert.ToInt16(dr2Data.RPM * 10);
+                            simData.Rpm = Convert.ToInt16(dr2Data.RPM * 10.0);
+                            simData.MaxRpm = Convert.ToInt16(dr2Data.MaxRPMs * 10.0);
                             if(dr2Data.Gear < 0)
                             {
                                 simData.Gear = 9;
@@ -56,11 +57,11 @@ namespace SimInterfaces
                             }
 
                             simData.Speed = Convert.ToInt16(dr2Data.Speed);
-                            simData.IgnOn = true;
-                            simData.EngineOn = true;
-                            simData.PitLimOn = true;
-                            simData.BrakeBias = 50.0;
-                            simData.FuelLevel = 100;
+                            simData.IgnOn = false;
+                            simData.EngineOn = false;
+                            simData.PitLimOn = false;
+                            simData.BrakeBias = 0.0;
+                            simData.FuelLevel = 0;
 
                             simData.TirePressure = _tirePressure;
                             simData.BrakeTemp = _brakeTemp;
