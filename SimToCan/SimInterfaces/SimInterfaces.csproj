@@ -42,10 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ACC.cs" />
+    <Compile Include="F1_2020.cs" />
     <Compile Include="DR2.cs" />
     <Compile Include="ISimInterface.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimData.cs" />
+    <Compile Include="Structs\F1_2020_Data.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\assettocorsasharedmemory\AssettoCorsaSharedMemory.csproj">

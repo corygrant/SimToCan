@@ -20,7 +20,8 @@ namespace SimToCan
     enum Sim
     {
         ACC,
-        DR2
+        DR2,
+        F1_2020
     }
 
     internal class SimToCanAppViewModel : ViewModelBase
@@ -34,17 +35,11 @@ namespace SimToCan
         private bool _isStarted;
         public SimToCanAppViewModel()
         {
-            if (CAN_INTERFACE == CAN_Interface.USB2CAN) { can = new USB2CAN(); }
-            if (CAN_INTERFACE == CAN_Interface.PCAN) { can = new PCAN(); }
-
-            if (SIM == Sim.ACC) { sim = new ACC(); }
-            if (SIM == Sim.DR2) { sim = new DR2(); }
-            sim.DataUpdated += Sim_DataUpdated;
-
             Sims = new ObservableCollection<SimInterfaces>()
             {
                 new SimInterfaces(){ Id=1, Name="ACC"},
-                new SimInterfaces(){ Id=2, Name="DR2"}
+                new SimInterfaces(){ Id=2, Name="DR2"},
+                new SimInterfaces(){ Id=3, Name="F1_2020"}
             };
 
             Cans = new ObservableCollection<CanInterfaces>()
@@ -87,16 +82,21 @@ namespace SimToCan
                 case "DR2":
                     sim = new DR2();
                     break;
+                case "F1_2020":
+                    sim = new F1_2020();
+                    break;
             }
 
             sim.DataUpdated += Sim_DataUpdated;
 
-            can.Init();
-            if (can.Start())
+            if (can.Init())
             {
-                sim.Start();
-                _isStarted= true;
-                StartBtnColor = new SolidColorBrush(Colors.Green);
+                if (can.Start())
+                {
+                    sim.Start();
+                    _isStarted = true;
+                    StartBtnColor = new SolidColorBrush(Colors.Green);
+                }
             }
         }
 
@@ -107,7 +107,7 @@ namespace SimToCan
 
         private void Stop(object parameter)
         {
-            can.Stop();
+            if(can != null)can.Stop();
             StartBtnColor = new SolidColorBrush(Colors.Gray);
             _isStarted = false;
         }
@@ -139,6 +139,7 @@ namespace SimToCan
             bd.PitLim = e.simData.PitLimOn;
             bd.Abs = e.simData.Abs;
             bd.Tc = e.simData.Tc;
+            if (e.simData.MaxRpm < 3000) e.simData.MaxRpm = 7000;
             data.Payload = SimDash.Messages.Build102(e.simData.Gear, bd, e.simData.MaxRpm);
             can.Write(data);
 
