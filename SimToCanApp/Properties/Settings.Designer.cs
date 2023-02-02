@@ -22,5 +22,23 @@ namespace SimToCanApp.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int SelectedCanInterface {
+            get {
+                return ((int)(this["SelectedCanInterface"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int SelectedSimInterface {
+            get {
+                return ((int)(this["SelectedSimInterface"]));
+            }
+        }
     }
 }

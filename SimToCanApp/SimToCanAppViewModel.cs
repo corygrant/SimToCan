@@ -1,8 +1,10 @@
 ﻿using CanInterfaces;
 using SimInterfaces;
+using SimToCanApp.Properties;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,9 +55,25 @@ namespace SimToCan
 
             StartBtnColor = new SolidColorBrush(Colors.Gray);
             StopBtnColor = new SolidColorBrush(Colors.Red);
+
+            int canId = (int)Settings.Default["SelectedCanInterface"];
+            int simId = (int)Settings.Default["SelectedSimInterface"];
+
+            if(canId > 0)
+            {
+                SelectedCan = Cans.First(x => x.Id == canId);
+            }
+            
+            if(simId > 0)
+            {
+                SelectedSim = Sims.First(x => x.Id == simId);
+            }
         }
         public void WindowClosing()
         {
+            Settings.Default["SelectedCanInterface"] = SelectedCan.Id;
+            Settings.Default["SelectedSimInterface"] = SelectedSim.Id;
+            Settings.Default.Save();
             Stop(null);
         }
 
