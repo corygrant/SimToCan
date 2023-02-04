@@ -10,7 +10,14 @@ Using the application is very straightforward, select the sim + CAN device from 
 
 ## Adding new sims
 New sims can be added using `ISimInterface`
-
+```
+public delegate void DataUpdatedHandler(object sender, SimDataEventArgs e);
+public interface ISimInterface
+{
+    void Start();
+    DataUpdatedHandler DataUpdated { get; set; }
+}
+```
 - Use `SimData` to define the data your hardware can support.
     - This data is used with all sims and CAN interfaces.
 - Reading the sim data should begin on `Start()` by accessing shared memory, opening a UDP port, using a library, etc. 
@@ -19,6 +26,15 @@ New sims can be added using `ISimInterface`
 
 ## Adding new USB to CAN 
 New USB CAN interfaces can be added using `ICANInterface`
+```
+public interface ICanInterface
+{
+    bool Init();
+    bool Start();
+    bool Stop();
+    bool Write(CanData canData);
+}
+```
 
 - Use `Init()`, `Start()`, `Stop()` to handle any interface requirements
     - Load/close library, open/close socket, etc.
