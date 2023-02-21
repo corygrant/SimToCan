@@ -47,6 +47,11 @@ New CAN hardware (dashes, wheels, etc.) can be added by
 - Setting the `Id`, `Len` and `Payload` for each `CanData` message
 - Writing the `CanData` message using `can.Write(data)`
 
+## Adding new message formats
+New CAN message formats can be added in numerous different ways
+
+As an example, see [SimDash.Messages](/SimDash/Messages.cs)
+
 # Supported sims
 *Note: Other sims may be supported if they use the same interfaces, these are the only ones that I have tested.*
 
