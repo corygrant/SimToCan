@@ -95,6 +95,7 @@ namespace SimInterfaces
         private void Ac_StaticInfoUpdated(object sender, StaticInfoEventArgs e)
         {
             _maxFuel = e.StaticInfo.MaxFuel;
+            _maxRpm = e.StaticInfo.MaxRpm;
 
             if (Enum.TryParse<AssettoCorsa.CarModel>(e.StaticInfo.CarModel, out _carModel))
             {
@@ -103,11 +104,6 @@ namespace SimInterfaces
             else
             {
                 _simData.CarId = 0;
-            }
-
-            if (_status == AC_STATUS.AC_LIVE)
-            {
-                AssettoCorsa.MaxRPM.TryGetValue(_carModel, out _maxRpm);
             }
         }
     }
