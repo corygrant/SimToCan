@@ -72,6 +72,9 @@ As an example, see [SimDash.Messages](/SimDash/Messages.cs)
 
 Assetto Corsa interface thanks to [mdjarv's assettocorsasharedmemory](https://github.com/mdjarv/assettocorsasharedmemory)
 
+See [my fork](https://github.com/corygrant/assettocorsasharedmemory) for my additions.
+
+
 # Supported USB to CAN Interfaces
 | Device  | Tested |
 | ----- | ------ |
