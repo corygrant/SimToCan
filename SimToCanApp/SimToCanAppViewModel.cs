@@ -56,8 +56,8 @@ namespace SimToCan
             StartBtnColor = new SolidColorBrush(Colors.Gray);
             StopBtnColor = new SolidColorBrush(Colors.Red);
 
-            int canId = (int)Settings.Default["SelectedCanInterface"];
-            int simId = (int)Settings.Default["SelectedSimInterface"];
+            int canId = (int)Settings.Default.SelectedCanInterface;
+            int simId = (int)Settings.Default.SelectedSimInterface;
 
             if(canId > 0)
             {
@@ -71,8 +71,8 @@ namespace SimToCan
         }
         public void WindowClosing()
         {
-            Settings.Default["SelectedCanInterface"] = SelectedCan.Id;
-            Settings.Default["SelectedSimInterface"] = SelectedSim.Id;
+            Settings.Default.SelectedCanInterface = SelectedCan.Id;
+            Settings.Default.SelectedSimInterface = SelectedSim.Id;
             Settings.Default.Save();
             Stop(null);
         }
