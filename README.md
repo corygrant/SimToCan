@@ -69,6 +69,7 @@ As an example, see [SimDash.Messages](/SimDash/Messages.cs)
 | F1 2020                       | X |   |
 | F1 2021                       |   | X |
 | F1 2022                       |   | X |
+| EA WRC                        | X |   |
 
 Assetto Corsa interface thanks to [mdjarv's assettocorsasharedmemory](https://github.com/mdjarv/assettocorsasharedmemory)
 

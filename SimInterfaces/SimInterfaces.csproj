@@ -49,6 +49,8 @@
     <Compile Include="SimData.cs" />
     <Compile Include="Structs\DR2_Data.cs" />
     <Compile Include="Structs\F1_2020_Data.cs" />
+    <Compile Include="Structs\WRC_Data.cs" />
+    <Compile Include="WRC.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\assettocorsasharedmemory\AssettoCorsaSharedMemory.csproj">

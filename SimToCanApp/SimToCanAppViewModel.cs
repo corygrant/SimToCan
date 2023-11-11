@@ -23,7 +23,8 @@ namespace SimToCan
     {
         ACC,
         DR2,
-        F1_2020
+        F1_2020,
+        WRC
     }
 
     internal class SimToCanAppViewModel : ViewModelBase
@@ -41,7 +42,8 @@ namespace SimToCan
             {
                 new SimInterfaces(){ Id=1, Name="ACC"},
                 new SimInterfaces(){ Id=2, Name="DR2"},
-                new SimInterfaces(){ Id=3, Name="F1_2020"}
+                new SimInterfaces(){ Id=3, Name="F1_2020"},
+                new SimInterfaces(){ Id=4, Name="WRC"}
             };
 
             Cans = new ObservableCollection<CanInterfaces>()
@@ -102,6 +104,9 @@ namespace SimToCan
                     break;
                 case "F1_2020":
                     sim = new F1_2020();
+                    break;
+                case "WRC":
+                    sim = new WRC();
                     break;
             }
 
